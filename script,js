@@ -1,0 +1,6 @@
+const  caixaprinsipal = document.queryselector(".caixa-principal);
+const  caixapergunta = document.queryselector(".caixapergunta);
+const  caixaalternativa = document.queryselector(".caixaalternativa);
+const  caixaresultado = document.queryselector(".caixaresultado);
+const  caixaresultado = document.queryselector(".caixaresultado);
+
