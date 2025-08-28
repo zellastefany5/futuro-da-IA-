@@ -4,3 +4,46 @@ const  caixaalternativa = document.queryselector(".caixaalternativa);
 const  caixaresultado = document.queryselector(".caixaresultado);
 const  caixaresultado = document.queryselector(".caixaresultado);
 
+const pergunta = [
+    {
+        anunciado: A IA subistituirá completamente alguns trabalhos humanos.
+        alternativas: [
+            "sim"
+            "não"
+        ]
+
+    },
+     {
+        anunciado: A IA será capaz de desenvolver por conciência propria?
+
+        alternativas: [
+            "sim"
+            "não"
+        ]
+
+    },
+    {
+        anunciado: O uso da IA na educação será mais comum no futuro?
+        alternativas: [
+            "sim"
+            "não"
+        ]
+
+    },
+    {
+        anunciado: A iA responderá um risco para a segurança global?
+        alternativas: [
+            "sim"
+            "não"
+        ]
+
+    },
+    {
+        anunciado: A IA poderá criar arte indistinguivel da arte humana ?
+        alternativas: [
+            "sim"
+            "não"
+        ]
+
+    },
+]
