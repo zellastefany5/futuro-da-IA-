@@ -47,3 +47,22 @@ const pergunta = [
 
     },
 ]
+
+let atual = 0;
+let perguntaatual;
+
+function mostrapergunta() {
+    perguntaatual = pergunta[atual];
+    caixapergunta.textocontent = perguntaatual.enunciado;
+    mostraalternativa();
+}
+
+function mostraalternativa(){
+for (const alternativa of perguntaatual.alternativa){
+const botaoalternativas =n documento.createelement("button");
+botaoalternativas.textocontent = alternativa;
+caixaalternativa.appendchild(botaoalternativas);
+
+   }
+}
+mostrapergunta();
