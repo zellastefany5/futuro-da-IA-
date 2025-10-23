@@ -1,68 +1,66 @@
-const  caixaprinsipal = document.queryselector(".caixa-principal);
-const  caixapergunta = document.queryselector(".caixapergunta);
-const  caixaalternativa = document.queryselector(".caixaalternativa);
-const  caixaresultado = document.queryselector(".caixaresultado);
-const  caixaresultado = document.queryselector(".caixaresultado);
+const caixaprincipal = document.querySelector(".caixa-principal");
+const caixapergunta = document.querySelector(".caixa-pergunta");
+const caixaalternativa = document.querySelector(".caixa-alternativa");
+const caixaresultado = document.querySelector(".caixa-resultado");
 
 const pergunta = [
     {
-        anunciado: A IA subistituirá completamente alguns trabalhos humanos.
-        alternativas: [
-            "sim"
-            "não"
-        ]
-
-    },
-     {
-        anunciado: A IA será capaz de desenvolver por conciência propria?
-
-        alternativas: [
-            "sim"
-            "não"
-        ]
-
+        enunciado: "A IA substituirá completamente alguns trabalhos humanos.",
+        alternativas: ["Sim", "Não"]
     },
     {
-        anunciado: O uso da IA na educação será mais comum no futuro?
-        alternativas: [
-            "sim"
-            "não"
-        ]
-
+        enunciado: "A IA será capaz de desenvolver por consciência própria?",
+        alternativas: ["Sim", "Não"]
     },
     {
-        anunciado: A iA responderá um risco para a segurança global?
-        alternativas: [
-            "sim"
-            "não"
-        ]
-
+        enunciado: "O uso da IA na educação será mais comum no futuro?",
+        alternativas: ["Sim", "Não"]
     },
     {
-        anunciado: A IA poderá criar arte indistinguivel da arte humana ?
-        alternativas: [
-            "sim"
-            "não"
-        ]
-
+        enunciado: "A IA representará um risco para a segurança global?",
+        alternativas: ["Sim", "Não"]
     },
-]
+    {
+        enunciado: "A IA poderá criar arte indistinguível da arte humana?",
+        alternativas: ["Sim", "Não"]
+    }
+];
 
 let atual = 0;
-let perguntaatual;
+let historiafinal = "";
 
 function mostrapergunta() {
-    perguntaatual = pergunta[atual];
-    caixapergunta.textocontent = perguntaatual.enunciado;
-    mostraalternativa();
+    const perguntaAtual = pergunta[atual];
+    caixapergunta.textContent = perguntaAtual.enunciado;
+    mostraalternativa(perguntaAtual);
 }
 
-function mostraalternativa(){
-for (const alternativa of perguntaatual.alternativa){
-const botaoalternativas =n documento.createelement("button");
-botaoalternativas.textocontent = alternativa;
-caixaalternativa.appendchild(botaoalternativas);
-
-   }
+function mostraalternativa(perguntaAtual) {
+    caixaalternativa.innerHTML = ""; // Limpa as alternativas anteriores
+    for (const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativa.textContent = alternativa;
+        botaoAlternativa.onclick = () => respostaselecionada(alternativa);
+        caixaalternativa.appendChild(botaoAlternativa);
+    }
 }
+
+function respostaselecionada(opcaoSelecionada) {
+    historiafinal += `Você escolheu: ${opcaoSelecionada}. `;
+    atual++;
+    
+    if (atual < pergunta.length) {
+        mostrapergunta();
+    } else {
+        mostraResultado();
+    }
+}
+
+function mostraResultado() {
+    caixapergunta.textContent = "Em 2049...";
+    caixaresultado.textContent = historiafinal;
+    caixaalternativa.textContent = "";
+}
+
+// Iniciar o jogo
 mostrapergunta();

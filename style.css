@@ -1,6 +1,65 @@
 :root {
     --cor-fundo: #010800;
+    --cor-principal: #0b0d20;:root {
+    --cor-fundo: #010800;
     --cor-principal: #0b0d20;
+    --cor-secundaria: #212333;
+    --cor-destaque: #2bdefd;
+    --cor-texto: #d7f9ff;    
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.caixa-principal {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--cor-principal);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.caixa-pergunta {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.caixa-alternativa button {
+    background-color: var(--cor-destaque);
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    color: var(--cor-principal);
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.caixa-alternativa button:hover {
+    background-color: #20a4f3;
+}
+
+.caixa-resultado {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
     --cor-secundaria: #212333;
     --cor-destaque: #2bdefd;
     --cor-texto: #d7f9ff;    
