@@ -3,29 +3,49 @@ const qBox = document.querySelector(".Q-box");
 const aBox = document.querySelector(".A-box");
 const rBox = document.querySelector(".R-box");
 const rText = document.querySelector(".R-text");
+const Perguntas = [
+  {
+    enunciado: "A IA será capaz de desenvolver consciência própria?",
+    alternativas: [
+      { texto: "sim" },
+      { texto: "nao" }
+    ]
+  },
+  {
+    enunciado: "A IA substituirá completamente alguns trabalhos humanos?",
+    alternativas: [
+      { texto: "sim" },
+      { texto: "nao" }
+    ]
+  },
+  {
+    enunciado: "O uso da IA na educação será mais comum no futuro?",
 
-const perguntas = [
-    {
-        enunciado: "A IA substituirá completamente alguns trabalhos humanos?",
-        alternativas: ["Sim", "Não"]
-    },
-    {
-        enunciado: "A IA será capaz de desenvolver consciência própria?",
-        alternativas: ["Sim", "Não"]
-    },
-    {
-        enunciado: "O uso da IA na educação será mais comum no futuro?",
-        alternativas: ["Sim", "Não"]
-    },
-    {
-        enunciado: "A IA representará um risco para a segurança global?",
-        alternativas: ["Sim", "Não"]
-    },
-    {
-        enunciado: "A IA poderá criar arte indistinguível da arte humana?",
-        alternativas: ["Sim", "Não"]
-    }
+    alternativas: [
+      { texto: "sim" },
+      { texto: "nao" }
+    ]
+  },
+  {
+    enunciado: "A IA representará um risco para a segurança global?",
+    alternativas: [
+      { texto: "sim" },
+      { texto: "nao" }
+    ]
+  },
+  {
+    enunciado: 
+
+       enunciado: "A IA poderá criar arte indistinguível da arte humana?",
+
+    alternativas: [
+      { texto: "sim" },
+      { texto: "nao" }
+    ]
+  },
 ];
+
+
 
 let atual = 0;
 let perguntaAtual;
