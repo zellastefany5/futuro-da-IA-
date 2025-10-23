@@ -1,9 +1,8 @@
-// Seleciona os elementos principais
-const caixaprincipal = document.querySelector(".caixa-principal");
-const caixapergunta = document.querySelector(".caixa-pergunta");
-const caixaalternativa = document.querySelector(".caixa-alternativa");
-const caixaresultado = document.querySelector(".caixa-resultado");
-
+const mainBox = document.querySelector(".main-box");
+const qBox = document.querySelector(".Q-box");
+const aBox = document.querySelector(".A-box");
+const rBox = document.querySelector(".R-box");
+const rText = document.querySelector(".R-text");
 // Lista de perguntas
 const perguntas = [
     {
@@ -28,48 +27,40 @@ const perguntas = [
     }
 ];
 
-// Controle da lógica
-let indiceAtual = 0;
+let atual = 0;
+let perguntaAtual;
 let historiaFinal = "";
 
-// Mostra a pergunta atual
-function mostrarPergunta() {
-    if (indiceAtual < perguntas.length) {
-        const perguntaAtual = perguntas[indiceAtual];
-        caixapergunta.textContent = perguntaAtual.enunciado;
-        mostrarAlternativas(perguntaAtual);
-    } else {
-        mostrarResultado();
-    }
+function mostraPergunta() {
+  if (atual >= Perguntas.length) {
+    mostraResposta();
+    return;
+  }
+  perguntaAtual = Perguntas[atual];
+  qBox.textContent = perguntaAtual.enunciado;
+  aBox.innerHTML = "";
+  mostraAlternativas();
 }
 
-// Mostra os botões de alternativas
-function mostrarAlternativas(perguntaAtual) {
-    caixaalternativa.innerHTML = ""; // limpa as alternativas anteriores
-    perguntaAtual.alternativas.forEach(alternativa => {
-        const botao = document.createElement("button");
-        botao.textContent = alternativa;
-        botao.classList.add("botao-alternativa");
-        botao.addEventListener("click", () => respostaSelecionada(alternativa));
-        caixaalternativa.appendChild(botao);
-    });
+function mostraAlternativas() {
+  for (const alternativa of perguntaAtual.alternativas) {
+    const botaoAlternativa = document.createElement("button");
+    botaoAlternativa.textContent = alternativa.texto;
+    botaoAlternativa.addEventListener("click", () => respostaSelecionada(alternativa));
+    aBox.appendChild(botaoAlternativa);
+  }
 }
 
-// Quando o usuário escolhe uma resposta
-function respostaSelecionada(opcao) {
-    historiaFinal += `Você respondeu "${opcao}" na pergunta ${indiceAtual + 1}. `;
-    indiceAtual++;
-    mostrarPergunta();
+function respostaSelecionada(opcaoSelecionada) {
+  historiaFinal = opcaoSelecionada.afirmacao;
+  atual++;
+  mostraPergunta();
 }
 
-// Exibe o resultado final
-function mostrarResultado() {
-    caixapergunta.textContent = "O futuro chegou... 🌍";
-    caixaalternativa.innerHTML = "";
-    caixaresultado.textContent = historiaFinal + "Agora, o futuro está em suas mãos!";
-    caixaresultado.classList.add("mostrar");
+function mostraResposta() {
+  qBox.textContent = "Resultado Final";
+  rText.textContent = historiaFinal;
+  aBox.innerHTML = "";
 }
 
-// Inicia o quiz
-mostrarPergunta();
-
+mostraPergunta();
