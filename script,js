@@ -1,9 +1,9 @@
-const mainBox = document.querySelector(".main-box");
+onst mainBox = document.querySelector(".main-box");
 const qBox = document.querySelector(".Q-box");
 const aBox = document.querySelector(".A-box");
 const rBox = document.querySelector(".R-box");
 const rText = document.querySelector(".R-text");
-// Lista de perguntas
+
 const perguntas = [
     {
         enunciado: "A IA substituirá completamente alguns trabalhos humanos?",
@@ -58,7 +58,7 @@ function respostaSelecionada(opcaoSelecionada) {
 }
 
 function mostraResposta() {
-  qBox.textContent = "Resultado Final";
+  qBox.textContent = "Quiz concluído!";
   rText.textContent = historiaFinal;
   aBox.innerHTML = "";
 }
