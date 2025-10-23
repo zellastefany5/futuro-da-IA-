@@ -1,8 +1,10 @@
+// Seleciona os elementos principais
 const caixaprincipal = document.querySelector(".caixa-principal");
 const caixapergunta = document.querySelector(".caixa-pergunta");
 const caixaalternativa = document.querySelector(".caixa-alternativa");
 const caixaresultado = document.querySelector(".caixa-resultado");
 
+// Lista de perguntas
 const perguntas = [
     {
         enunciado: "A IA substituirá completamente alguns trabalhos humanos?",
@@ -26,9 +28,11 @@ const perguntas = [
     }
 ];
 
+// Controle da lógica
 let indiceAtual = 0;
 let historiaFinal = "";
 
+// Mostra a pergunta atual
 function mostrarPergunta() {
     if (indiceAtual < perguntas.length) {
         const perguntaAtual = perguntas[indiceAtual];
@@ -39,28 +43,32 @@ function mostrarPergunta() {
     }
 }
 
+// Mostra os botões de alternativas
 function mostrarAlternativas(perguntaAtual) {
     caixaalternativa.innerHTML = ""; // limpa as alternativas anteriores
-    perguntaAtual.alternativas.forEach((alternativa) => {
+    perguntaAtual.alternativas.forEach(alternativa => {
         const botao = document.createElement("button");
         botao.textContent = alternativa;
         botao.classList.add("botao-alternativa");
-        botao.onclick = () => respostaSelecionada(alternativa);
+        botao.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaalternativa.appendChild(botao);
     });
 }
 
+// Quando o usuário escolhe uma resposta
 function respostaSelecionada(opcao) {
-    historiaFinal += `Você respondeu "${opcao}" à pergunta ${indiceAtual + 1}. `;
+    historiaFinal += `Você respondeu "${opcao}" na pergunta ${indiceAtual + 1}. `;
     indiceAtual++;
     mostrarPergunta();
 }
 
+// Exibe o resultado final
 function mostrarResultado() {
     caixapergunta.textContent = "O futuro chegou... 🌍";
     caixaalternativa.innerHTML = "";
-    caixaresultado.textContent = historiaFinal + "Como você moldará o amanhã?";
+    caixaresultado.textContent = historiaFinal + "Agora, o futuro está em suas mãos!";
     caixaresultado.classList.add("mostrar");
 }
 
+// Inicia o quiz
 mostrarPergunta();
