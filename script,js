@@ -72,3 +72,4 @@ function mostrarResultado() {
 
 // Inicia o quiz
 mostrarPergunta();
+
