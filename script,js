@@ -3,13 +3,13 @@ const caixapergunta = document.querySelector(".caixa-pergunta");
 const caixaalternativa = document.querySelector(".caixa-alternativa");
 const caixaresultado = document.querySelector(".caixa-resultado");
 
-const pergunta = [
+const perguntas = [
     {
-        enunciado: "A IA substituirá completamente alguns trabalhos humanos.",
+        enunciado: "A IA substituirá completamente alguns trabalhos humanos?",
         alternativas: ["Sim", "Não"]
     },
     {
-        enunciado: "A IA será capaz de desenvolver por consciência própria?",
+        enunciado: "A IA será capaz de desenvolver consciência própria?",
         alternativas: ["Sim", "Não"]
     },
     {
@@ -26,41 +26,41 @@ const pergunta = [
     }
 ];
 
-let atual = 0;
-let historiafinal = "";
+let indiceAtual = 0;
+let historiaFinal = "";
 
-function mostrapergunta() {
-    const perguntaAtual = pergunta[atual];
-    caixapergunta.textContent = perguntaAtual.enunciado;
-    mostraalternativa(perguntaAtual);
-}
-
-function mostraalternativa(perguntaAtual) {
-    caixaalternativa.innerHTML = ""; // Limpa as alternativas anteriores
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativa = document.createElement("button");
-        botaoAlternativa.textContent = alternativa;
-        botaoAlternativa.onclick = () => respostaselecionada(alternativa);
-        caixaalternativa.appendChild(botaoAlternativa);
-    }
-}
-
-function respostaselecionada(opcaoSelecionada) {
-    historiafinal += `Você escolheu: ${opcaoSelecionada}. `;
-    atual++;
-    
-    if (atual < pergunta.length) {
-        mostrapergunta();
+function mostrarPergunta() {
+    if (indiceAtual < perguntas.length) {
+        const perguntaAtual = perguntas[indiceAtual];
+        caixapergunta.textContent = perguntaAtual.enunciado;
+        mostrarAlternativas(perguntaAtual);
     } else {
-        mostraResultado();
+        mostrarResultado();
     }
 }
 
-function mostraResultado() {
-    caixapergunta.textContent = "Em 2049...";
-    caixaresultado.textContent = historiafinal;
-    caixaalternativa.textContent = "";
+function mostrarAlternativas(perguntaAtual) {
+    caixaalternativa.innerHTML = ""; // limpa as alternativas anteriores
+    perguntaAtual.alternativas.forEach((alternativa) => {
+        const botao = document.createElement("button");
+        botao.textContent = alternativa;
+        botao.classList.add("botao-alternativa");
+        botao.onclick = () => respostaSelecionada(alternativa);
+        caixaalternativa.appendChild(botao);
+    });
 }
 
-// Iniciar o jogo
-mostrapergunta();
+function respostaSelecionada(opcao) {
+    historiaFinal += `Você respondeu "${opcao}" à pergunta ${indiceAtual + 1}. `;
+    indiceAtual++;
+    mostrarPergunta();
+}
+
+function mostrarResultado() {
+    caixapergunta.textContent = "O futuro chegou... 🌍";
+    caixaalternativa.innerHTML = "";
+    caixaresultado.textContent = historiaFinal + "Como você moldará o amanhã?";
+    caixaresultado.classList.add("mostrar");
+}
+
+mostrarPergunta();
